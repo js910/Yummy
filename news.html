@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Yoga Studio Template">
+  <meta name="keywords" content="Yoga, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Yummy | 맛집News</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/배너이미지.css">
+  <style>
+    .sidebar-item2:hover{
+      transform: scale(2);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header Section Begin -->
+  <header class="header-section-other">
+    <div class="container-fluid">
+      <div class="logo">
+        <a href="./home.html"><img src="img/little-logo.png" alt=""></a>
+      </div>
+      <div class="nav-menu">
+        <nav class="main-menu mobile-menu">
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="restaurants.html">맛집 목록</a></li>
+            <li><a href="random.html">오늘의 식사</a></li>
+            <li class="active"><a href="news.html">맛집News</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="mobile-menu-wrap"></div>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <section class="banner-container">
+    <a id="banner-link" href="https://www.gong-cha.co.kr/brand/">
+      <img id="banner-image" src="img/banner/공차.jpg">
+    </a>
+    <button class="banner-button left" onclick="prevImage()">이전</button>
+    <button class="banner-button right" onclick="nextImage()">다음</button>
+  </section>
+  
+  <script>
+    let bannerImgs = ["img/banner/공차.jpg", "img/banner/메가커피.png", "img/banner/빽다방_블루캔디월드.jpg", "img/banner/빽다방_슈크리미.jpg",
+      "img/banner/설빙.jpg", "img/banner/스타벅스.jpg", "img/banner/이디야.jpg"];
+    let bannerLink = ["https://www.gong-cha.co.kr/brand/", "https://www.mega-mgccoffee.com/", "https://paikdabang.com/", "https://paikdabang.com/",
+      "https://sulbing.com/main.php", "https://www.starbucks.co.kr", "https://ediya.com/"];
+    // Current index of the image displayed on the screen
+    let currentIdx = 0; // Initialize the variable to display the first value of the bannerImgs array
+  
+    function prevImage() {
+      currentIdx = (currentIdx > 0) ? currentIdx - 1 : bannerImgs.length - 1;
+      showBanner(currentIdx);
+    }
+  
+    function nextImage() {
+      currentIdx = (currentIdx < bannerImgs.length - 1) ? currentIdx + 1 : 0;
+      showBanner(currentIdx);
+    }
+  
+    function showBanner(index) {
+      let imgTag = document.getElementById("banner-image");
+      let linkTag = document.getElementById("banner-link");
+  
+      imgTag.src = bannerImgs[index];
+      linkTag.href = bannerLink[index];
+    }
+  
+    // Change image every 2 seconds
+    setInterval(nextImage, 2000);
+  </script>
+
+  <!-- About Me Section Begin -->
+  <section class="top-recipe spad">
+    <div class="container po-relative">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="about-right">
+            <div class="sidebar">
+              <div class="sidebar-item"><a href="https://tv.naver.com/v/50391719">
+                <img src="img/top-recipe/방송_제주보쌈.png">
+                <div class="sidebar-item-text">
+                  <div class="cat-name">생방송오늘아침 24.04.25 방송</div>
+                  <h6>주머니 가벼운 날, 한 끼 든든하게 먹을 수 있는 가성비 식당?!</h6>
+                </div></a>
+              </div>
+              <div class="sidebar-item"><a href="https://tv.naver.com/v/18151887">
+                <img src="img/top-recipe/방송_월화고기.png">
+                <div class="sidebar-item-text">
+                  <div class="cat-name">생방송투데이 21.02.26 방송</div>
+                  <div class="cat-name">블루리본 선정</div>
+                  <h6>돼지고기의 신세계! 풍미도 좋고 맛도 좋은 ‘듀록 고기’</h6>
+                </div></a>
+              </div>
+              <div class="sidebar-item"><a href="https://tv.naver.com/v/47625952">
+                <img src="img/top-recipe/방송_방앗간.png">
+                <div class="sidebar-item-text">
+                  <div class="cat-name">생방송투데이 24.02.27 방송</div>
+                  <h6>상큼한 과일과 쫄깃한 떡의 만남! ‘떡 크로플’</h6>
+                </div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="about-left" style="background-color: #939394; margin: 0 auto; padding: 50px 30px;">
+            <h3 style="text-align: center; padding-bottom: 20px; color: white;"><b>#인스타 맛집</b></h3>
+            <div class="row" style="display: flex; flex-wrap: wrap; font-style: oblique; transition: all 0.2s linear;">
+              <div style="padding:10px; width: 50%;">
+                <div class="sidebar-item2"
+                  style="padding: 20px; box-shadow: 5px 5px 5px gray; background-color: darksalmon;">
+                  <img src="img/top-recipe/인스타_왕플.png">
+                  <div class="about-title" style="padding: 10px 0px;">
+                    <h4 style="color:midnightblue; font-weight: 600;">#신림역맛집 #신원시장 #와플맛집</h4>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:10px; width: 50%;">
+                <div class="sidebar-item2"
+                  style="padding: 20px; box-shadow: 5px 5px 5px gray; background-color:darksalmon;">
+                  <img src="img/top-recipe/인스타_맥시칸즉석햄버거.png">
+                  <div class="about-title" style="padding: 10px 0px;">
+                    <h4 style="color:midnightblue; font-weight: 600;">#당곡역맛집 #떡볶이맛집 #가성비맛집</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" style="display: flex; flex-wrap: wrap;">
+              <div style="padding:10px; width: 50%;" style="box-sizing: border-box;">
+                <div class="sidebar-item2"
+                  style="padding: 20px; box-shadow: 5px 5px 5px gray; background-color:darksalmon;">
+                  <img src="img/top-recipe/인스타_월화고기.png">
+                  <div class="about-title" style="padding: 10px 0px; background-color:darksalmon;">
+                    <h4 style="color:midnightblue; font-weight: 600;">#저기압일땐고기앞으로 #먹스타그램</h4>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:10px; width: 50%;">
+                <div class="sidebar-item2"
+                  style="padding: 20px; box-shadow: 5px 5px 5px gray; background-color:darksalmon;">
+                  <img src="img/top-recipe/인스타_seize.png">
+                  <div class="about-title" style="padding: 10px 0px; background-color:darksalmon;">
+                    <h4 style="color:midnightblue; font-weight: 600;">#당곡역카페 #신림맛집</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- About Me Section End -->
+
+  <!-- Footer Section Begin -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="fs-left">
+            <div class="logo">
+              <img src="img/footer-logo.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <form action="#" class="subscribe-form">
+            <p><b>개인정보취급방침 | 웹회원 이용약관 | 책임한계와 법적고지 | 이메일 무단수집 거부</b></p>
+            <p>서울특별시 관악구 봉천로 227 대표이사: 마루치</p>
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
+              with <i class="fa fa-heart-o" aria-hidden="true"></i> by Colorlib
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/mixitup.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

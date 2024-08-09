@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Yoga Studio Template">
+  <meta name="keywords" content="Yoga, unica, creative, html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Yummy | 오늘의 식사</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+  <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <script type="text/javascript"
+    src="https://sgisapi.kostat.go.kr/OpenAPI3/auth/javascriptAuth?consumer_key=e584214c6dee422cbf23"></script>
+</head>
+
+<body>
+  <!-- Page Preloder -->
+  <div id="preloder">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Header Section Begin -->
+  <header class="header-section-other">
+    <div class="container-fluid">
+      <div class="logo">
+        <a href="home.html"><img src="img/little-logo.png" alt="Logo"></a>
+      </div>
+      <div class="nav-menu">
+        <nav class="main-menu mobile-menu">
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="restaurants.html">맛집 목록</a></li>
+            <li class="active"><a href="random.html">오늘의 식사</a></li>
+            <li><a href="news.html">맛집News</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div id="mobile-menu-wrap"></div>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <!-- Roulette Section Begin -->
+  <div class="hero-search set-bg" data-setbg="img/search-bg.jpg">
+    <div class="container">
+      <div class="filter-table">
+        <form id="roulette-form" class="filter-search">
+          <select id="category">
+            <option value="none" disabled selected>카테고리를 선택하세요</option>
+            <option value="">전체</option>
+            <option value="한식">한식</option>
+            <option value="분식">분식</option>
+            <option value="패스트푸드">패스트푸드</option>
+            <option value="국수">국수</option>
+            <option value="돼지고기구이">돼지고기구이</option>
+            <option value="태국음식">태국음식</option>
+            <option value="카페">카페</option>
+          </select>
+          <button type="submit">식사 추첨</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Roulette Section End -->
+
+  <!-- About Me Section Begin -->
+  <section class="about-me spad">
+    <div class="container" style=" text-align: center;">
+      <img id="before-meal" src="img/this is not to eat.png" style="max-height: 800px;">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="about-left">
+            <div id="roulette-result">
+              <div class="recipe-item" id="selected-recipe">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="about-right" id="map" style="width:100%;height:500px; margin-bottom: 20px;"></div>
+          <div id="kakao-link"></div>
+          <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0c74fb9f43764d7980c2bf5b34e1fa1f&libraries=services"></script>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- About Me Section End -->
+
+  <!-- Footer Section Begin -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="fs-left">
+            <div class="logo">
+              <img src="img/footer-logo.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <form action="#" class="subscribe-form">
+            <p><b>개인정보취급방침 | 웹회원 이용약관 | 책임한계와 법적고지 | 이메일 무단수집 거부</b></p>
+            <p>서울특별시 관악구 봉천로 227 대표이사: 마루치</p>
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+              template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Colorlib
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Js Plugins -->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <script src="js/mixitup.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const recipes = [
+      {
+        category: '한식',
+        img: 'img/recipe/그김에.jpg',
+        title: '그김에',
+        description: '바삭한 김 청정 흰쌀밥 얼큰한 찌개 밥상의 정석<br>서울 관악구 보라매로3길 17 동방파레스 1층',
+        address: '서울 관악구 보라매로3길 17',
+        addId: 'https://map.kakao.com/link/to/863483135'
+      },
+      {
+        category: '한식',
+        img: 'img/recipe/늘콩.jpg',
+        title: '늘콩',
+        description: '늘 한결곁은 마음과 정성의 콩나물국밥/비빔밥<br>서울 관악구 신림로 387',
+        address: '서울 관악구 신림로 387',
+        addId: 'https://map.kakao.com/link/to/1396116983'
+      },
+      {
+        category: '한식',
+        img: 'img/recipe/미전.jpg',
+        title: '미전',
+        description: '오징어철판불고기 맛집<br>서울 동작구 보라매로3길 29 해태보라매타워 2층',
+        address: '서울 동작구 보라매로3길 29',
+        addId: 'https://map.kakao.com/link/to/12070174'
+      },
+      {
+        category: '한식',
+        img: 'img/recipe/새벽감자탕.jpg',
+        title: '새벽감자탕',
+        description: '푸짐한 점심메뉴 우거지감자탕 뼈해장국 뼈구이<br>서울 관악구 보라매로3길7 1층 101호',
+        address: '서울 관악구 보라매로3길7',
+        addId: 'https://map.kakao.com/link/to/1811494514'
+      },
+      {
+        category: '한식',
+        img: 'img/recipe/전주집.jpg',
+        title: '전주집',
+        description: '가성비 좋은 집밥 백반<br>서울 관악구 보라매로3길 29 지하 1층',
+        address: '서울 관악구 보라매로3길 29',
+        addId: 'https://map.kakao.com/link/to/16935791'
+      },
+      {
+        category: '한식',
+        img: 'img/recipe/한촌설렁탕.jpg',
+        title: '한촌설렁탕',
+        description: '40년전통 정직한 육수, 맛있는 설렁탕<br>서울 동작구 보라매로5길 35 보라매현대아파트 1층 상가',
+        address: '서울 동작구 보라매로5길 35',
+        addId: 'https://map.kakao.com/link/to/12601467'
+      },
+      {
+        category: '돼지고기구이',
+        img: 'img/recipe/황군집.jpg',
+        title: '황군집',
+        description: '반찬 잘나오는 보라매 고기맛집<br>서울 관악구 보라매로 17 나동 102호',
+        address: '서울 관악구 보라매로 17',
+        addId: 'https://map.kakao.com/link/to/1684700086'
+      },
+      {
+        category: '일식',
+        img: 'img/recipe/허수아비돈까스.jpg',
+        title: '허수아비돈까스',
+        description: '담백하고 가성비 좋은 돈가스<br>서울 동작구 보라매로3길 29 2층',
+        address: '서울 동작구 보라매로3길 29',
+        addId: 'https://map.kakao.com/link/to/16651368'
+      },
+      {
+        category: '일식',
+        img: 'img/recipe/katsu97.png',
+        title: 'Katsu97',
+        description: '신선한 원육과 정성스런 차림 맛있는 식사<br>서울 관악구 봉천로7길 3 현교빌딩 1층',
+        address: '서울 관악구 봉천로7길 3',
+        addId: 'https://map.kakao.com/link/to/698175130'
+      },
+      {
+        category: '패스트푸드',
+        img: 'img/recipe/kfc.jpg',
+        title: 'KFC',
+        description: '맛있는 치킨을 쉽고 빠르게<br>서울 동작구 보라매로5가길 7',
+        address: '서울 동작구 보라매로5가길 7',
+        addId: 'https://map.kakao.com/link/to/8017282'
+      },
+      {
+        category: '패스트푸드',
+        img: 'img/recipe/롯데리아.jpg',
+        title: '롯데리아',
+        description: '맛있는 즐거움, 깔끔한 버거<br>서울 동작구 보라매로5길 35 103호',
+        address: '서울 동작구 보라매로5길 35',
+        addId: 'https://map.kakao.com/link/to/1040911227'
+      },
+      {
+        category: '태국음식',
+        img: 'img/recipe/레몬그라스타이.jpg',
+        title: '레몬그라스타이',
+        description: '태국 5성급 호텔 요리사 출신의 진짜 태국의 맛!<br>서울 관악구 봉천로 245 1층',
+        address: '서울 관악구 봉천로 245',
+        addId: 'https://map.kakao.com/link/to/2127431264'
+      },
+      {
+        category: '분식',
+        img: 'img/recipe/죠스떡볶이.jpg',
+        title: '죠스떡볶이',
+        description: '죠스는 항상 즐겁습니다.<br>서울 관악구 보라매로3길 29 1층',
+        address: '서울 관악구 보라매로3길 29',
+        addId: 'https://map.kakao.com/link/to/13322538'
+      },
+      {
+        category: '분식',
+        img: 'img/recipe/맥시칸즉석햄버거.jpg',
+        title: '맥시칸즉석햄버거',
+        description: '추억의 라볶이와 버거<br>서울 관악구 당곡길 9',
+        address: '서울 관악구 당곡길 9',
+        addId: 'https://map.kakao.com/link/to/21132403'
+      },
+      {
+        category: '국수',
+        img: 'img/recipe/만나칼국수.jpg',
+        title: '만나칼국수',
+        description: '푸짐하고 가성비 좋은 한끼<br>서울 관악구 봉천로7길 23 주흥빌딩',
+        address: '서울 관악구 봉천로7길 23',
+        addId: 'https://map.kakao.com/link/to/13287229'
+      },
+      {
+        category: '국수',
+        img: 'img/recipe/멸치사골곰탕국수집.jpg',
+        title: '멸치사골곰탕국수집',
+        description: '국물이 끝내줘요~~<br>서울 관악구 보라매로2길 1',
+        address: '서울 관악구 보라매로2길 1',
+        addId: 'https://map.kakao.com/link/to/22576518'
+      },
+      {
+        category: '카페',
+        img: 'img/recipe/빽다방.jpg',
+        title: '빽다방',
+        description: '합리적인 가격, 놀라운 퀄리티<br>서울 관악구 보라매로5가길 7 1층 105호',
+        address: '서울 관악구 보라매로5가길 7',
+        addId: 'https://map.kakao.com/link/to/863483135'
+      },
+      {
+        category: '카페',
+        img: 'img/recipe/캔팩토리.jpg',
+        title: '캔팩토리',
+        description: '늦게까지 여는 단체 캔포장 맛집<br>서울 관악구 보라매로 15-8 1층',
+        address: '서울 관악구 보라매로 15-8',
+        addId: 'https://map.kakao.com/link/to/1829674095'
+      }
+    ];
+
+    function getRandomRecipe(category) {
+      const filteredRecipes = recipes.filter(recipe => !category || recipe.category === category);
+      const randomIndex = Math.floor(Math.random() * filteredRecipes.length);
+      return filteredRecipes[randomIndex];
+    }
+    document.getElementById('roulette-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById('before-meal').style.display='none';
+
+      const category = document.getElementById('category').value;
+      const randomRecipe = getRandomRecipe(category);
+
+      const recipeItem = `
+        <a href="#"><img src="${randomRecipe.img}" alt=""></a>
+        <div class="ri-text">
+          <div class="cat-name">${randomRecipe.category}</div>
+          <h4  style="line-height: 60px">${randomRecipe.title}</h4>
+          <p>${randomRecipe.description}</p>
+        </div>
+      `;
+
+      document.getElementById('selected-recipe').innerHTML = recipeItem;
+      document.getElementById('roulette-result').style.display = 'block';
+
+      var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = {
+          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+          level: 3 // 지도의 확대 레벨
+        };
+
+      // 지도를 생성합니다    
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+      // 지도를 업데이트하는 부분
+      var geocoder = new kakao.maps.services.Geocoder();
+      var address = randomRecipe.address;
+      geocoder.addressSearch(address, function (result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+          });
+
+          var infowindow = new kakao.maps.InfoWindow({
+            content: `<div style="width:150px;text-align:center;padding:6px 0;">${randomRecipe.title}</div>`
+          });
+          infowindow.open(map, marker);
+          map.setCenter(coords);
+        }
+      });
+      const kakaoLink = `카카오 길찾기: <a href="${randomRecipe.addId}">${randomRecipe.addId}</a>`;
+      document.getElementById('kakao-link').innerHTML = kakaoLink;
+    });
+  </script>
+</body>
+
+</html>

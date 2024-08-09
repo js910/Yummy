@@ -1,0 +1,28 @@
+
+.banner-container{
+  position: relative;
+  width: 100%;
+}
+
+#banner-image{
+  width: 100%;
+  display: block;
+}
+
+.banner-button{
+  position: absolute;
+  top: 50%;
+  background-color: rgba(245, 245, 245, 0.57);
+  border: none;
+  border-radius: 50%;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.banner-button.left{
+  left : 10px;
+}
+
+.banner-button.right{
+  right : 10px;
+}
